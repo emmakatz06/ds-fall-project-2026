@@ -45,8 +45,8 @@ The full reasoning for every decision is in `notebooks/01_data_cleaning.ipynb`. 
 | `Gender` | Free text with ~40 variants and typos | Grouped into Male / Female / Non-binary/Other / Unknown; originals kept in `Gender_raw` |
 | `state` | Blank for non-US respondents; 4 non-US rows had a state anyway | "Non-US" for non-US rows, "Unknown" for 11 US blanks |
 | `Country` | Long tail of countries with very few respondents | Kept as is; added `Country_grouped` (countries with fewer than 20 respondents become "Other") |
-| `self_employed` | 18 blanks, all in the first minutes of the survey | Filled with the most common answer, "No" |
-| `work_interfere` | 264 blanks, from respondents without a condition | Filled with "Not applicable" |
+| `self_employed` | 18 blanks (question added after launch) labeled "Unknown" |
+| `work_interfere` | 264 blanks labeled "Unknown" (question only applies to people with a condition, but a blank doesn't confirm they have none) |
 | `comments` | 87% empty optional free text | Dropped (still in the raw file) |
 | `Timestamp` | Stored as text; 69 responses came in 2015–2016 | Converted to datetime; late responses kept |
 
