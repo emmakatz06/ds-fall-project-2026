@@ -21,10 +21,11 @@ data/
   processed/survey_clean.csv   cleaned dataset (output of stage 1)
 notebooks/
   01_data_cleaning.ipynb       stage 1: cleaning walkthrough
-  02_eda.ipynb                 stage 2 (to be added)
+  02_eda.ipynb                 stage 2: exploratory analysis and statistics
   03_modeling.ipynb            stage 3 (to be added)
 app/                           stage 4: Streamlit dashboard (to be added)
 docs/                          data dictionary, quality report, other docs
+requirements.txt               Python dependencies (`pip install -r requirements.txt`)
 ```
 
 ## The data
@@ -45,8 +46,8 @@ The full reasoning for every decision is in `notebooks/01_data_cleaning.ipynb`. 
 | `Gender` | Free text with ~40 variants and typos | Grouped into Male / Female / Non-binary/Other / Unknown; originals kept in `Gender_raw` |
 | `state` | Blank for non-US respondents; 4 non-US rows had a state anyway | "Non-US" for non-US rows, "Unknown" for 11 US blanks |
 | `Country` | Long tail of countries with very few respondents | Kept as is; added `Country_grouped` (countries with fewer than 20 respondents become "Other") |
-| `self_employed` | 18 blanks (question added after launch) labeled "Unknown" |
-| `work_interfere` | 264 blanks labeled "Unknown" (question only applies to people with a condition, but a blank doesn't confirm they have none) |
+| `self_employed` | 18 blanks (question added after launch) | Labeled "Unknown" |
+| `work_interfere` | 264 blanks (question only applies to people with a condition, but a blank doesn't confirm they have none) | Labeled "Unknown" |
 | `comments` | 87% empty optional free text | Dropped (still in the raw file) |
 | `Timestamp` | Stored as text; 69 responses came in 2015–2016 | Converted to datetime; late responses kept |
 
