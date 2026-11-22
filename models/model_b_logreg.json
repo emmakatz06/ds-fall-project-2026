@@ -1,0 +1,126 @@
+{
+  "model": "Logistic regression (Model B, no work_interfere)",
+  "target": "1 = sought mental-health treatment",
+  "threshold": 0.5,
+  "trained_on_rows": 1259,
+  "sklearn_version": "1.9.1",
+  "features": {
+    "Age": [
+      18,
+      72
+    ],
+    "Gender": [
+      "Female",
+      "Male",
+      "Other"
+    ],
+    "self_employed": [
+      "No",
+      "Unknown",
+      "Yes"
+    ],
+    "family_history": [
+      "No",
+      "Yes"
+    ],
+    "no_employees": [
+      0,
+      5
+    ],
+    "remote_work": [
+      "No",
+      "Yes"
+    ],
+    "tech_company": [
+      "No",
+      "Yes"
+    ],
+    "benefits": [
+      "Don't know",
+      "No",
+      "Yes"
+    ],
+    "care_options": [
+      "No",
+      "Not sure",
+      "Yes"
+    ],
+    "wellness_program": [
+      "Don't know",
+      "No",
+      "Yes"
+    ],
+    "seek_help": [
+      "Don't know",
+      "No",
+      "Yes"
+    ],
+    "anonymity": [
+      "Don't know",
+      "No",
+      "Yes"
+    ],
+    "leave": [
+      "Don't know",
+      "Somewhat difficult",
+      "Somewhat easy",
+      "Very difficult",
+      "Very easy"
+    ],
+    "mental_health_consequence": [
+      "Maybe",
+      "No",
+      "Yes"
+    ],
+    "phys_health_consequence": [
+      "Maybe",
+      "No",
+      "Yes"
+    ],
+    "coworkers": [
+      "No",
+      "Some of them",
+      "Yes"
+    ],
+    "supervisor": [
+      "No",
+      "Some of them",
+      "Yes"
+    ],
+    "mental_health_interview": [
+      "Maybe",
+      "No",
+      "Yes"
+    ],
+    "phys_health_interview": [
+      "Maybe",
+      "No",
+      "Yes"
+    ],
+    "mental_vs_physical": [
+      "Don't know",
+      "No",
+      "Yes"
+    ],
+    "obs_consequence": [
+      "No",
+      "Yes"
+    ]
+  },
+  "no_employees_coding": {
+    "1-5": 0,
+    "6-25": 1,
+    "26-100": 2,
+    "100-500": 3,
+    "500-1000": 4,
+    "More than 1000": 5
+  },
+  "test_scores_train_only_fit": {
+    "AUC": 0.762,
+    "F1": 0.7,
+    "Recall": 0.664,
+    "Precision": 0.739,
+    "Accuracy": 0.71
+  },
+  "caveat": "Associations in a 2014 survey (79% male, ~60% US); not a tool for predicting individuals."
+}

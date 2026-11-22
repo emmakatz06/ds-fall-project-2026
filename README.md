@@ -22,7 +22,10 @@ data/
 notebooks/
   01_data_cleaning.ipynb       stage 1: cleaning walkthrough
   02_eda.ipynb                 stage 2: exploratory analysis and statistics
-  03_modeling.ipynb            stage 3 (to be added)
+  03_modeling.ipynb            stage 3: models, evaluation, saved app model
+models/
+  model_b_logreg.joblib        saved model for the app (logistic regression, no work_interfere)
+  model_b_logreg.json          its feature list, allowed answers, cut-off and test scores
 app/                           stage 4: Streamlit dashboard (to be added)
 docs/                          data dictionary, quality report, other docs
 requirements.txt               Python dependencies (`pip install -r requirements.txt`)
@@ -63,3 +66,15 @@ The full reasoning for every decision is in `notebooks/01_data_cleaning.ipynb`. 
   size_order = ["1-5", "6-25", "26-100", "100-500", "500-1000", "More than 1000"]
   df["no_employees"] = pd.Categorical(df["no_employees"], categories=size_order, ordered=True)
   ```
+
+### Modeling results (stage 3)
+
+Full details in `notebooks/03_modeling.ipynb`. Stratified 80/20 split (seed 42); model selection with 5-fold cross-validation repeated 10 times on the training part; test set scored once.
+
+| | Model B (headline: no `work_interfere`, 1,259 rows) | Model A (with `work_interfere`, 995 rows who answered it) |
+|---|---|---|
+| Majority-class baseline accuracy | 50.5% | 63.6% |
+| Cross-validated AUC | about 0.78 | about 0.83 |
+| Test AUC / accuracy | 0.75 / 69% (random forest); 0.76 / 71% (logistic regression) | 0.82 / 77% (gradient boosting) |
+
+Logistic regression, random forest and gradient boosting are within noise of each other. Family history is the strongest predictor, then care options, gender and benefits. The cut-off stays at 0.5 and Model B's probabilities are well calibrated. These are associations in a 2014 survey sample, not a tool for predicting individuals.
