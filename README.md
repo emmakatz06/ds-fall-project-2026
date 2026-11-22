@@ -51,12 +51,12 @@ The full reasoning for every decision is in `notebooks/01_data_cleaning.ipynb`. 
 | `comments` | 87% empty optional free text | Dropped (still in the raw file) |
 | `Timestamp` | Stored as text; 69 responses came in 2015–2016 | Converted to datetime; late responses kept |
 
-**Result:** 1,259 rows and 28 columns, with no missing values or duplicates.
+**Result:** 1,259 rows and 28 columns, with no missing values and no exact duplicates (4 pairs of rows that differ only by timestamp were flagged and kept).
 
 ### Notes for the next stages
 
 - **Leakage risk:** `work_interfere` asks how a mental health condition affects work, so it nearly gives away `treatment`. Including it as a model feature will inflate accuracy. Decide deliberately whether to use it, and report results both with and without it.
-- **Small groups:** Non-binary/Other has only 14 respondents, which is too few for reliable statistical tests or subgroup metrics on its own. For country, use `Country_grouped` in analysis and modeling. The original `Country` column still has many countries with very few respondents.
+- **Small groups:** The Other gender group (Non-binary/Other plus Unknown) has only 18 respondents, which is too few for reliable statistical tests or subgroup metrics on its own. For country, use `Country_grouped` in analysis and modeling. The original `Country` column still has many countries with very few respondents.
 - **Ordered scales:** `no_employees`, `leave`, and `work_interfere` have a natural order, but a CSV can't store it, so they'll sort alphabetically unless you set the order after loading:
 
   ```python
